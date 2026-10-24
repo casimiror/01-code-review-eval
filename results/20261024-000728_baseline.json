@@ -1,0 +1,673 @@
+{
+  "meta": {
+    "label": "baseline",
+    "timestamp": "2026-10-24T00:07:28+00:00",
+    "model": "sonnet",
+    "runs": 3,
+    "line_tolerance": 3,
+    "skill_sha256": "ab8684b5da6a",
+    "git_commit": null,
+    "git_dirty": true,
+    "claude_version": "2.1.310 (Claude Code)"
+  },
+  "gate": {
+    "passed": true,
+    "checks": {
+      "recall": true,
+      "precision": true,
+      "clean_false_alarm_rate": true
+    },
+    "thresholds": {
+      "min_recall": 0.7,
+      "min_precision": 0.7,
+      "max_clean_false_alarm": 0.25
+    }
+  },
+  "summary": {
+    "precision": {
+      "mean": 0.8571428571428571,
+      "std": 0.0,
+      "min": 0.8571428571428571,
+      "max": 0.8571428571428571,
+      "n": 3,
+      "ci95_cases": [
+        0.6666666666666666,
+        1.0
+      ]
+    },
+    "recall": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 3,
+      "ci95_cases": [
+        1.0,
+        1.0
+      ]
+    },
+    "f1": {
+      "mean": 0.923076923076923,
+      "std": 0.0,
+      "min": 0.923076923076923,
+      "max": 0.923076923076923,
+      "n": 3
+    },
+    "category_accuracy": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 3
+    },
+    "severity_accuracy": {
+      "mean": 0.8333333333333334,
+      "std": 0.0,
+      "min": 0.8333333333333334,
+      "max": 0.8333333333333334,
+      "n": 3
+    },
+    "clean_false_alarm_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 3
+    },
+    "contract_failure_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 3
+    },
+    "recall_by_category": {
+      "correctness": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "performance": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "reliability": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "security": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      }
+    }
+  },
+  "per_case": {
+    "001-sql-injection": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "002-clean-refactor": {
+      "expected": 0,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "003-off-by-one-pages": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "004-missing-await": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "005-hardcoded-secret": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 1.0
+    },
+    "006-swallowed-exception": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "007-clean-feature": {
+      "expected": 0,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "008-n-plus-one": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    }
+  },
+  "per_run": [
+    {
+      "tp": 6,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "f1": 0.923076923076923,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 0.8333333333333334,
+      "clean_false_alarm_rate": 0.0,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 1.0,
+        "correctness": 1.0,
+        "reliability": 1.0,
+        "performance": 1.0
+      }
+    },
+    {
+      "tp": 6,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "f1": 0.923076923076923,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 0.8333333333333334,
+      "clean_false_alarm_rate": 0.0,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 1.0,
+        "correctness": 1.0,
+        "reliability": 1.0,
+        "performance": 1.0
+      }
+    },
+    {
+      "tp": 6,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "f1": 0.923076923076923,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 0.8333333333333334,
+      "clean_false_alarm_rate": 0.0,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 1.0,
+        "correctness": 1.0,
+        "reliability": 1.0,
+        "performance": 1.0
+      }
+    }
+  ],
+  "cost": {
+    "total_usd": 0.4578,
+    "p50_s": 6.399601500001154,
+    "p95_s": 8.279934417005279
+  },
+  "raw": [
+    {
+      "run": 0,
+      "case": "001-sql-injection",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0222714,
+      "duration_s": 7.45,
+      "findings": [
+        {
+          "file": "app/users.py",
+          "line": 13,
+          "severity": "critical",
+          "category": "security",
+          "description": "The `name` value is interpolated straight into the SQL string with an f-string, so it allows SQL injection. An input like `' OR '1'='1` or `' UNION SELECT ...` makes the query return or expose arbitrary data. Use a parameterized query instead: `conn.execute(\"... LIKE ?\", (f\"%{name}%\",))`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "002-clean-refactor",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.015824,
+      "duration_s": 4.01,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "003-off-by-one-pages",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0178537,
+      "duration_s": 5.3,
+      "findings": [
+        {
+          "file": "app/pagination.py",
+          "line": 9,
+          "severity": "high",
+          "category": "correctness",
+          "description": "total_pages uses floor division, so it undercounts whenever there is a partial last page. For example, 25 items with per_page=20 returns 1 instead of 2, which hides the last items. It should round up, for example `(count + per_page - 1) // per_page`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "004-missing-await",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0233977,
+      "duration_s": 7.58,
+      "findings": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`getUser` is async, as `getProjects` shows by awaiting it, but `deleteProject` doesn't await it. `user` is therefore a Promise and `user.isAdmin` is always undefined. Every request gets a 403, including requests from admins, so deletion never works."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "005-hardcoded-secret",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.019172,
+      "duration_s": 6.18,
+      "findings": [
+        {
+          "file": "app/billing.py",
+          "line": 5,
+          "severity": "critical",
+          "category": "security",
+          "description": "A production payments API token is hardcoded in source, so anyone with repo access can read and use it. Remove it from the code and rotate the token."
+        },
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now silently falls back to the hardcoded prod token instead of failing. A misconfigured dev or test environment would then make real charges against production."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now silently falls back to the hardcoded prod token instead of failing. A misconfigured dev or test environment would then make real charges against production."
+        }
+      ]
+    },
+    {
+      "run": 0,
+      "case": "006-swallowed-exception",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0178546,
+      "duration_s": 6.4,
+      "findings": [
+        {
+          "file": "app/sync.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "The bare `except Exception: pass` silently swallows every repo.save failure (DB outage, constraint violation, bug). Orders are dropped with no log or re-raise, and the caller only sees a lower count. Log the exception with the order id, and re-raise or collect the failures."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "007-clean-feature",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.015612000000000001,
+      "duration_s": 3.63,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "008-n-plus-one",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.017472,
+      "duration_s": 4.57,
+      "findings": [
+        {
+          "file": "app/queries.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "performance",
+          "description": "orders_with_customers loads all orders with no limit, then calls session.get(Customer, ...) per order, an N+1 pattern. Session.get uses the identity map, so repeat customers are cached, but each distinct customer still costs a query. Use a single join (query(Order, Customer).join(...)) or joinedload, and consider pagination."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "001-sql-injection",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0216094,
+      "duration_s": 7.01,
+      "findings": [
+        {
+          "file": "app/users.py",
+          "line": 13,
+          "severity": "critical",
+          "category": "security",
+          "description": "The `name` value is interpolated straight into the SQL string, so it allows SQL injection. An input like `' OR 1=1 --` or a UNION SELECT can read or alter data. Use a parameterized query instead: `conn.execute(\"... LIKE ?\", (f\"%{name}%\",))`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "002-clean-refactor",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0158503,
+      "duration_s": 3.93,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "003-off-by-one-pages",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0209522,
+      "duration_s": 6.7,
+      "findings": [
+        {
+          "file": "app/pagination.py",
+          "line": 9,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`count // per_page` rounds down, so a partial last page is not counted. For example, 25 items with 20 per page gives 1 page instead of 2, and 10 items gives 0 pages. It should round up, e.g. `(count + per_page - 1) // per_page`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "004-missing-await",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.018788,
+      "duration_s": 5.81,
+      "findings": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`getUser` is async (awaited in `getProjects`) but is not awaited here. `user` is a Promise, so `user.isAdmin` is always undefined and every delete request returns 403, even for admins. Add `await`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "005-hardcoded-secret",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.020358300000000003,
+      "duration_s": 7.24,
+      "findings": [
+        {
+          "file": "app/billing.py",
+          "line": 5,
+          "severity": "critical",
+          "category": "security",
+          "description": "A production payments API token is hardcoded in source. Anyone with repo access can read and use it, and it stays in git history, so it needs rotating."
+        },
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "high",
+          "category": "security",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now falls back silently to the hardcoded prod token. Charges then go out with that credential from any misconfigured environment, such as dev or test, instead of failing fast with a KeyError."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "high",
+          "category": "security",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now falls back silently to the hardcoded prod token. Charges then go out with that credential from any misconfigured environment, such as dev or test, instead of failing fast with a KeyError."
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "case": "006-swallowed-exception",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.017882000000000002,
+      "duration_s": 5.4,
+      "findings": [
+        {
+          "file": "app/sync.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "`except Exception: pass` silently swallows every save failure (DB outage, constraint violation, bug) with no logging. Orders are dropped without a trace, and the caller only sees a lower count, so it can't tell a partial sync from a complete one. Log the exception and either re-raise or record the failed orders."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "007-clean-feature",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0156383,
+      "duration_s": 8.15,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "008-n-plus-one",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.018318300000000003,
+      "duration_s": 5.46,
+      "findings": [
+        {
+          "file": "app/queries.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "performance",
+          "description": "N+1 query: `session.get(Customer, order.customer_id)` runs inside a loop over every order, so it issues one query per distinct customer. The first query also loads all orders with no limit. Use a single join or `joinedload`/`selectinload` instead, and consider paginating."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "001-sql-injection",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0180617,
+      "duration_s": 5.16,
+      "findings": [
+        {
+          "file": "app/users.py",
+          "line": 13,
+          "severity": "critical",
+          "category": "security",
+          "description": "The `name` argument is interpolated directly into the SQL string with an f-string, so SQL injection is possible. An input like `' OR 1=1 --` or a UNION SELECT can read or alter arbitrary data. Use a parameterized query instead: `conn.execute(\"... LIKE ?\", (f\"%{name}%\",))`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "002-clean-refactor",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.015824,
+      "duration_s": 3.86,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "003-off-by-one-pages",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.022034900000000003,
+      "duration_s": 13.03,
+      "findings": [
+        {
+          "file": "app/pagination.py",
+          "line": 9,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`count // per_page` uses floor division, so it drops a final partial page. For example, 25 items with per_page=20 gives 1 page instead of 2, which makes the last 5 items unreachable. It should round up, e.g. `-(-count // per_page)` or `math.ceil`. Also, `per_page=0` raises ZeroDivisionError."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "004-missing-await",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.023327900000000002,
+      "duration_s": 8.95,
+      "findings": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`getUser` is async, as `getProjects` awaits it, but `deleteProject` calls it without `await`. `user` is therefore a Promise, and `user.isAdmin` is always undefined. Every request gets a 403, so deletion never works."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "005-hardcoded-secret",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0211146,
+      "duration_s": 6.94,
+      "findings": [
+        {
+          "file": "app/billing.py",
+          "line": 5,
+          "severity": "critical",
+          "category": "security",
+          "description": "A production payments API token is hardcoded in source as DEFAULT_PAYMENTS_TOKEN. Anyone with repo access can use it, and it stays in git history. Remove it and rotate the token."
+        },
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "high",
+          "category": "security",
+          "description": "The code now falls back to the hardcoded prod token when PAYMENTS_API_TOKEN is unset. A misconfigured dev, test, or staging environment will silently make real charges with production credentials instead of failing fast. Keep the `os.environ[...]` lookup so a missing token raises."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "high",
+          "category": "security",
+          "description": "The code now falls back to the hardcoded prod token when PAYMENTS_API_TOKEN is unset. A misconfigured dev, test, or staging environment will silently make real charges with production credentials instead of failing fast. Keep the `os.environ[...]` lookup so a missing token raises."
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "case": "006-swallowed-exception",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0214037,
+      "duration_s": 7.84,
+      "findings": [
+        {
+          "file": "app/sync.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "`except Exception: pass` swallows every failure from `repo.save` with no logging and no re-raise. If the database is down or an order fails validation, that order is silently dropped. The function just returns a smaller count, and the caller can't tell a partial sync from a complete one. Catch the specific expected exceptions, log the failure with `log.exception`, and surface or count the failures."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "007-clean-feature",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0185325,
+      "duration_s": 8.28,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "008-n-plus-one",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0186283,
+      "duration_s": 6.05,
+      "findings": [
+        {
+          "file": "app/queries.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "performance",
+          "description": "N+1 query: session.get(Customer, ...) is called once per order. session.get only avoids a query when the Customer is already in the identity map, so a table with many orders and mostly distinct customers issues roughly one query per customer. Use a join or joinedload/selectinload instead. The unbounded session.query(Order).all() also loads every order into memory."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    }
+  ]
+}

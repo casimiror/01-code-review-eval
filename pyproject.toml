@@ -1,0 +1,22 @@
+[project]
+name = "code-review-eval"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["eval/cases"]  # case files are test data: never reformat them
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

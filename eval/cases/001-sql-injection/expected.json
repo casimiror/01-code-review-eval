@@ -1,0 +1,9 @@
+[
+  {
+    "file": "app/users.py",
+    "line": 13,
+    "category": "security",
+    "severity": "critical",
+    "description": "User input interpolated into SQL with an f-string: SQL injection (e.g. name = \"' OR 1=1 --\")."
+  }
+]

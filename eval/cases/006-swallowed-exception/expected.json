@@ -1,0 +1,9 @@
+[
+  {
+    "file": "app/sync.py",
+    "line": 13,
+    "category": "reliability",
+    "severity": "medium",
+    "description": "Every save error is silently discarded (no log, no retry, no re-raise): failed orders are lost with no trace."
+  }
+]

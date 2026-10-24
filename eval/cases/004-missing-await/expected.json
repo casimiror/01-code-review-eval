@@ -1,0 +1,9 @@
+[
+  {
+    "file": "src/routes/projects.js",
+    "line": 10,
+    "category": "correctness",
+    "severity": "high",
+    "description": "getUser is async and not awaited: user is a Promise, user.isAdmin is undefined, so every delete is rejected with 403."
+  }
+]

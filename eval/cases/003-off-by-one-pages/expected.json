@@ -1,0 +1,9 @@
+[
+  {
+    "file": "app/pagination.py",
+    "line": 9,
+    "category": "correctness",
+    "severity": "medium",
+    "description": "Floor division drops the last partial page: 45 items / 20 per page gives 2 instead of 3."
+  }
+]

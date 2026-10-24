@@ -1,0 +1,9 @@
+[
+  {
+    "file": "app/queries.py",
+    "line": 12,
+    "category": "performance",
+    "severity": "medium",
+    "description": "One query per order to load its customer (N+1) over an unbounded list of all orders; use a join or selectinload."
+  }
+]

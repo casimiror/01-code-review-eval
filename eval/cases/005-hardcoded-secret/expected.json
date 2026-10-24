@@ -1,0 +1,9 @@
+[
+  {
+    "file": "app/billing.py",
+    "line": 5,
+    "category": "security",
+    "severity": "critical",
+    "description": "Production payments token hardcoded in source and used as a silent fallback; anyone with repo access can issue charges."
+  }
+]

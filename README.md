@@ -63,3 +63,16 @@ Each case is a code change with known defects (`expected.json`), or none. Two ki
 The eval runs every case K times, matches findings to expected defects (same file, line within ±3),
 and reports recall, precision, F1, false alarms on clean diffs, category/severity accuracy, per-case
 detection rate, cost and latency, with run-to-run std and a bootstrap CI over cases.
+
+## Try the live demo
+
+The end-to-end demo (case `011`, a path-traversal bug) lives on a separate branch,
+`demo/notes-subfolders`: two commits, a safe notes server and a "subfolders" feature that opens the
+hole. Switch to it and run the reviewer on the vulnerable commit:
+
+```bash
+git switch demo/notes-subfolders
+make review-branch BASE=8c4c10d     # reviews the branch's changes vs the safe baseline commit
+```
+
+It flags a `critical`/`security` finding at `demo/notes_server.py:28`. Run `git switch main` when done.

@@ -1,9 +1,9 @@
 # EVAL.md
 
 An eval for a diff-reviewer skill. Every number below cites a file in `results/`. Iterations 0–1
-grew the **dataset** with the skill held fixed (`skill_sha256` `ab8684b5`), so those deltas are
-dataset-only. Iteration 2 changed the **skill** (and nothing else) to confirm a UX-only edit does
-not move detection. The grader was never changed in the same iteration as either.
+and 3 changed the **dataset** with the skill held fixed; iteration 2 changed only the **skill**, to
+confirm a UX-only edit does not move detection. Every iteration changes one thing, and the grader
+was never changed in the same iteration as the skill.
 
 ## What is measured
 
@@ -29,6 +29,7 @@ not move detection. The grader was never changed in the same iteration as either
 | 0 baseline | 8 authored | 1.00 ± 0.00 | 0.86 ± 0.00 | 0.00 | PASS | `results/20261024-000728_baseline.json` |
 | 1 real cases | 11 (8 + 2 OSS + 1 demo) | 0.89 ± 0.00 (CI 0.64–1.00) | 0.81 ± 0.08 (CI 0.64–1.00) | 0.17 | PASS | `results/20261026-155714_dataset-11.json` |
 | 2 skill UX edit | 11 (same) | 0.89 ± 0.00 (CI 0.64–1.00) | 0.80 ± 0.00 (CI 0.64–1.00) | 0.00 | PASS | `results/20261026-192240_skill-default-diff.json` |
+| 3 fix 005 label | 11 (005 relabeled) | 0.87 ± 0.06 (CI 0.63–1.00) | 0.93 ± 0.12 (CI 0.78–1.00) | 0.00 | PASS | `results/20261026-194255_fix-005-label.json` |
 
 Smoke runs on the two OSS cases alone (`20261026-153854`, `20261026-154242`): recall 0.50,
 precision 1.00 — i.e. 010 detected 3/3, 009 missed 0/3. All runs K=3, tolerance ±3, model sonnet.
@@ -64,6 +65,21 @@ on the one clean case that occasionally false-alarms (`007`), not the edit.
 **Conclusion**: confirmed UX-only. The `skill_sha256` changed but the numbers did not, which is
 exactly what should happen when the changed code path is never exercised by the eval.
 
+### Iteration 3 — fix the 005 label (dataset-only)
+**Hypothesis**: the 0.81 precision in iteration 1 was a labeling artifact — the reviewer's line-9
+finding on 005 (silent fallback to the prod token) is a *real* second defect my `expected.json`
+omitted, so it was wrongly counted as a false positive.
+**Change**: added the line-9 defect to `005/expected.json` (security/high). The two 005 defects are
+4 lines apart, outside the ±3 window, so they match independently. Skill and grader unchanged
+(`skill_sha256` still `dcf17d8`).
+**Result**: precision **0.80 → 0.93**; 005 goes from mean FP 1.0 to **0.0** (both findings now
+matched). Confirmed the artifact. Two honest side effects: (a) `category_accuracy` 1.00 → 0.92,
+because the reviewer calls the line-9 defect `reliability` 2/3 runs while I labeled it `security` —
+a real category disagreement that was previously *hidden* inside the FP count; (b) `recall` 0.89 →
+0.87 is run-to-run noise on `004` (2/3 this run vs 3/3 before), not the label change.
+**Conclusion**: the dataset, not the reviewer, was costing ~0.12 precision. Relabeling also surfaced
+a category disagreement worth its own look.
+
 ## What I found
 
 - **Synthetic saturates, real code discriminates.** 1.00 on authored bugs, 0.89 once real code is
@@ -74,9 +90,10 @@ exactly what should happen when the changed code path is never exercised by the 
   reused per-mode across frames — which lives in other files, outside the diff. A diff-only reviewer
   has nothing to latch onto. This is the hardest defect class (missing case) under the tightest
   context (diff only).
-- **Precision is partly a labeling artifact.** `005` is flagged at line 9 every run (mean FP 1.0).
-  That is a *real* second defect (silent fallback to a prod token) my `expected.json` omits, so the
-  reported 0.81 understates true precision. Not yet fixed — see next steps.
+- **A labeling artifact cost ~0.12 precision (now fixed).** `005`'s line-9 finding (silent fallback
+  to a prod token) was a real second defect my `expected.json` omitted, counted as an FP. Iteration
+  3 added it: precision 0.80 → 0.93. Lesson: before blaming the reviewer's precision, audit the
+  labels — a missing expected defect looks exactly like reviewer noise.
 - **One genuine false alarm on a clean case.** `007` (clean) gets a spurious finding in 1/3 runs;
   this is what the 0.17 clean false-alarm rate captures, and it is real reviewer noise, not labeling.
 - **Category accuracy is perfect (1.00), severity is not (0.88).** When the reviewer finds a bug it
@@ -97,10 +114,11 @@ exactly what should happen when the changed code path is never exercised by the 
 
 ## Next iterations (planned, one variable each)
 
-1. **Fix the `005` label** (dataset-only): add the line-9 defect. Expect precision to rise toward
-   1.00 — isolating that the 0.81 was an artifact.
-2. **Give the reviewer file context** (skill/runner change): let it read the changed file, not just
+1. **Give the reviewer file context** (skill/runner change): let it read the changed file, not just
    the diff, and measure whether `009` is detected **without** raising the clean false-alarm rate.
    This directly tests the "the evidence is outside the diff" explanation for the Pillow miss.
-3. **Tolerance sensitivity**: re-grade the same findings at ±0/±1/±3 to quantify how much the line
+2. **Tolerance sensitivity**: re-grade the same findings at ±0/±1/±3 to quantify how much the line
    tolerance props up recall (no new LLM calls).
+3. **Semantic match**: the grader matches on file+line only; a finding on the right line for the
+   wrong reason counts as a hit. Add an LLM-judge (validated by hand) that checks the description
+   names the same defect, and compare against the positional grader.

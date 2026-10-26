@@ -4,6 +4,13 @@
     "line": 5,
     "category": "security",
     "severity": "critical",
-    "description": "Production payments token hardcoded in source and used as a silent fallback; anyone with repo access can issue charges."
+    "description": "Production payments token hardcoded in source; anyone with repo access can issue charges."
+  },
+  {
+    "file": "app/billing.py",
+    "line": 9,
+    "category": "security",
+    "severity": "high",
+    "description": "When PAYMENTS_API_TOKEN is unset the code silently falls back to the hardcoded prod token instead of failing, so a misconfigured deploy uses the real credential without anyone noticing."
   }
 ]

@@ -1,0 +1,30 @@
+diff --git a/demo/notes_server.py b/demo/notes_server.py
+index e3ad52f..e11eed3 100644
+--- a/demo/notes_server.py
++++ b/demo/notes_server.py
+@@ -14,7 +14,8 @@ NOTES_DIR = Path("notes")
+ 
+ 
+ def list_notes() -> list[str]:
+-    return sorted(p.name for p in NOTES_DIR.glob("*.txt"))
++    # Now walks subfolders too, so notes can be organised in directories.
++    return sorted(str(p.relative_to(NOTES_DIR)) for p in NOTES_DIR.rglob("*.txt"))
+ 
+ 
+ class NotesHandler(BaseHTTPRequestHandler):
+@@ -23,11 +24,12 @@ class NotesHandler(BaseHTTPRequestHandler):
+             self._send(200, json.dumps(list_notes()).encode(), "application/json")
+         elif self.path.startswith("/notes/"):
+             name = self.path.removeprefix("/notes/")
+-            # Only serve files that the listing exposes.
+-            if name not in list_notes():
++            # Resolve the note under NOTES_DIR, including any subfolder in the path.
++            target = NOTES_DIR / name
++            if not target.is_file():
+                 self._send(404, b"note not found\n", "text/plain")
+                 return
+-            self._send(200, (NOTES_DIR / name).read_bytes(), "text/plain; charset=utf-8")
++            self._send(200, target.read_bytes(), "text/plain; charset=utf-8")
+         else:
+             self._send(404, b"not found\n", "text/plain")
+ 

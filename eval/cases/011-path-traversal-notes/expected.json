@@ -1,0 +1,9 @@
+[
+  {
+    "file": "demo/notes_server.py",
+    "line": 28,
+    "category": "security",
+    "severity": "critical",
+    "description": "The request path is joined to NOTES_DIR with no containment check (the old allowlist was removed when subfolder support was added), so GET /notes/../../pyproject.toml escapes the notes directory and reads arbitrary files: path traversal (CWE-22)."
+  }
+]

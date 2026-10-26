@@ -1,0 +1,11 @@
+{
+  "origin": "local-branch",
+  "branch": "demo/notes-subfolders",
+  "base": "8c4c10d",
+  "head": "98be51a",
+  "authored": true,
+  "status": "A vulnerability we introduced on a branch in this repo for the video demo; not found in the wild. Unlike 009/010 (real OSS PRs), the ground truth is that we wrote it.",
+  "ground_truth": "verified: Path('demo/notes') / '../../pyproject.toml' resolves outside NOTES_DIR and is_file() is True, so the handler returns it",
+  "fetch": "git diff 8c4c10d...98be51a -- demo/notes_server.py > input.diff",
+  "review": "make review-branch BASE=8c4c10d   (on the demo/notes-subfolders branch)"
+}

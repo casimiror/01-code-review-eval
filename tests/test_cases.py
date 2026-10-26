@@ -48,10 +48,19 @@ def test_every_case_is_authored_or_real():
         assert (case / "after").is_dir() != (case / "source.json").exists(), case.name
 
 
+# Provenance keys required per origin. "github-pr": a bug from a real OSS PR. "local-branch":
+# a bug we authored and demo through a branch in this repo.
+SOURCE_KEYS = {
+    "github-pr": ("repo", "pr", "base", "head", "ground_truth", "fetch", "review"),
+    "local-branch": ("branch", "base", "head", "ground_truth", "fetch", "review"),
+}
+
+
 @pytest.mark.parametrize("case", REAL_CASES, ids=lambda p: p.name)
 def test_real_case_is_reproducible(case):
     source = json.loads((case / "source.json").read_text())
-    for key in ("repo", "pr", "base", "head", "ground_truth", "fetch", "review"):
+    assert source.get("origin") in SOURCE_KEYS, f"source.json needs origin in {set(SOURCE_KEYS)}"
+    for key in SOURCE_KEYS[source["origin"]]:
         assert source.get(key), f"source.json missing {key}"
 
 

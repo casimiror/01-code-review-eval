@@ -1,0 +1,11 @@
+{
+  "repo": "python-pillow/Pillow",
+  "pr": 9208,
+  "url": "https://github.com/python-pillow/Pillow/pull/9208",
+  "base": "abfdbdd6cef8ec530dad74e8b2d2dda5f0bba1df",
+  "head": "ce8d05484b71737a352eb6a52332cb7856b597c6",
+  "status": "merged 2025-10-05, shipped in Pillow 12.0.0",
+  "ground_truth": "GHSA-v9pv-5gc8-w2m6 (stale native storage after mode change), fixed in 13.0.0 by commit 78d97d9945 which removes these lines and checks mode and size in Image.seek()",
+  "fetch": "gh pr diff 9208 --repo python-pillow/Pillow > input.diff",
+  "review": "make review-pr PR=9208 REPO=python-pillow/Pillow"
+}

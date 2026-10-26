@@ -4,6 +4,9 @@
 
 Cases are authored as real file trees so line numbers in expected.json can be checked against
 after/ (see tests/test_cases.py) instead of being counted by hand inside a diff.
+
+Real-world cases have no before/after: their input.diff is the PR diff as fetched by the command in
+source.json, so this script leaves them alone.
 """
 
 import subprocess
@@ -38,8 +41,12 @@ def make_diff(case: Path) -> str:
     return "\n".join(lines) + "\n"
 
 
+def authored_cases() -> list[Path]:
+    return sorted(p for p in CASES_DIR.iterdir() if (p / "after").is_dir())
+
+
 def main() -> None:
-    for case in sorted(p for p in CASES_DIR.iterdir() if p.is_dir()):
+    for case in authored_cases():
         (case / "input.diff").write_text(make_diff(case))
         print(f"{case.name}: input.diff")
 

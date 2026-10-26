@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "label": "real-cases-smoke",
+    "timestamp": "2026-10-26T15:38:54+00:00",
+    "model": "sonnet",
+    "runs": 3,
+    "line_tolerance": 3,
+    "skill_sha256": "ab8684b5da6a",
+    "git_commit": "c960b5c",
+    "git_dirty": true,
+    "claude_version": "2.1.310 (Claude Code)"
+  },
+  "gate": {
+    "passed": false,
+    "checks": {
+      "recall": false,
+      "precision": true,
+      "clean_false_alarm_rate": true
+    },
+    "thresholds": {
+      "min_recall": 0.7,
+      "min_precision": 0.7,
+      "max_clean_false_alarm": 0.25
+    }
+  },
+  "summary": {
+    "precision": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 3,
+      "ci95_cases": [
+        1.0,
+        1.0
+      ]
+    },
+    "recall": {
+      "mean": 0.5,
+      "std": 0.0,
+      "min": 0.5,
+      "max": 0.5,
+      "n": 3,
+      "ci95_cases": [
+        0.0,
+        1.0
+      ]
+    },
+    "f1": {
+      "mean": 0.6666666666666666,
+      "std": 0.0,
+      "min": 0.6666666666666666,
+      "max": 0.6666666666666666,
+      "n": 3
+    },
+    "category_accuracy": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 3
+    },
+    "severity_accuracy": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 3
+    },
+    "clean_false_alarm_rate": {
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null,
+      "n": 0
+    },
+    "contract_failure_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 3
+    },
+    "recall_by_category": {
+      "correctness": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "security": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 3
+      }
+    }
+  },
+  "per_case": {
+    "009-pillow-mpo-stale-mode": {
+      "expected": 1,
+      "detected_runs": "0/3",
+      "mean_fp": 0.0
+    },
+    "010-httpx-base-url-query": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    }
+  },
+  "per_run": [
+    {
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 1.0,
+      "clean_false_alarm_rate": null,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 0.0,
+        "correctness": 1.0
+      }
+    },
+    {
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 1.0,
+      "clean_false_alarm_rate": null,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 0.0,
+        "correctness": 1.0
+      }
+    },
+    {
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 1.0,
+      "clean_false_alarm_rate": null,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 0.0,
+        "correctness": 1.0
+      }
+    }
+  ],
+  "cost": {
+    "total_usd": 0.1369,
+    "p50_s": 10.330597542022588,
+    "p95_s": 14.698264165985165
+  },
+  "raw": [
+    {
+      "run": 0,
+      "case": "009-pillow-mpo-stale-mode",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.018696700000000004,
+      "duration_s": 9.7,
+      "findings": [],
+      "missed": [
+        {
+          "file": "src/PIL/JpegImagePlugin.py",
+          "line": 196,
+          "category": "security",
+          "severity": "critical",
+          "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+        }
+      ],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "010-httpx-base-url-query",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0237963,
+      "duration_s": 10.33,
+      "findings": [
+        {
+          "file": "httpx/_client.py",
+          "line": 420,
+          "severity": "medium",
+          "category": "correctness",
+          "description": "When the base URL has a query string and the request URL also has one (e.g. base 'https://h/get?data=1', request '/users?x=2'), merge_url.raw_path already contains '?x=2'. The code then appends '?data=1', which gives 'users?x=2?data=1'. The query is malformed: the request's x value becomes '2?data=1' and the base's data=1 is lost."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "009-pillow-mpo-stale-mode",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0178006,
+      "duration_s": 8.88,
+      "findings": [],
+      "missed": [
+        {
+          "file": "src/PIL/JpegImagePlugin.py",
+          "line": 196,
+          "category": "security",
+          "severity": "critical",
+          "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+        }
+      ],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "010-httpx-base-url-query",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0288184,
+      "duration_s": 16.26,
+      "findings": [
+        {
+          "file": "httpx/_client.py",
+          "line": 420,
+          "severity": "medium",
+          "category": "correctness",
+          "description": "When the base URL has a query string and the request URL also has one (e.g. build_request('GET', '/users?x=1')), merge_url.raw_path already contains '?x=1'. The code then appends b'?' + base_query, which produces '/users?x=1?data=1'. That corrupts the query: x becomes '1?data=1' and data is lost. The two queries need to be combined with '&', or the base query handled separately."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "009-pillow-mpo-stale-mode",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.018570700000000002,
+      "duration_s": 9.27,
+      "findings": [],
+      "missed": [
+        {
+          "file": "src/PIL/JpegImagePlugin.py",
+          "line": 196,
+          "category": "security",
+          "severity": "critical",
+          "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+        }
+      ],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "010-httpx-base-url-query",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.029203,
+      "duration_s": 14.7,
+      "findings": [
+        {
+          "file": "httpx/_client.py",
+          "line": 420,
+          "severity": "medium",
+          "category": "correctness",
+          "description": "When the base URL has a query, `merge_url.raw_path` is used whole, and it can carry its own query. For example, `build_request(\"GET\", \"/users?x=1\")` with base `.../get?data=1` gives `users?x=1?data=1`. The request's query is mangled, and the two queries are not merged or separated with `&`. The code should split the merge path at `?` before joining."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    }
+  ]
+}

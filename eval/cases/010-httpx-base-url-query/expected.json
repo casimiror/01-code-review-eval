@@ -1,0 +1,9 @@
+[
+  {
+    "file": "httpx/_client.py",
+    "line": 420,
+    "category": "correctness",
+    "severity": "medium",
+    "description": "merge_url.raw_path already includes the request's own query, so base_url '/get?data=1' with client.get('/users?page=2') builds '/get/users?page=2?data=1': a second '?' folds data=1 into the page value (verified against httpx.URL.raw_path)."
+  }
+]

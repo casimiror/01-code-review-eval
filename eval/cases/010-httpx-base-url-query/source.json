@@ -1,0 +1,11 @@
+{
+  "repo": "encode/httpx",
+  "pr": 3766,
+  "url": "https://github.com/encode/httpx/pull/3766",
+  "base": "ae1b9f66238f75ced3ced5e4485408435de10768",
+  "head": "18927fa8e80fcf650d2c47cfe370a7d92c18bd83",
+  "status": "open as of 2026-10-26; the diff can change if the PR is updated, base/head pin this version",
+  "ground_truth": "verified by hand: httpx.URL('/users?page=2').raw_path == b'/users?page=2', so the merged path gets two '?'",
+  "fetch": "gh pr diff 3766 --repo encode/httpx > input.diff",
+  "review": "make review-pr PR=3766 REPO=encode/httpx"
+}

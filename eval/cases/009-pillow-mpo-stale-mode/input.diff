@@ -1,0 +1,48 @@
+diff --git a/Tests/images/frame_size.mpo b/Tests/images/frame_size.mpo
+new file mode 100644
+index 00000000000..ee5c6cdf7a9
+Binary files /dev/null and b/Tests/images/frame_size.mpo differ
+diff --git a/Tests/images/sugarshack_frame_size.mpo b/Tests/images/sugarshack_frame_size.mpo
+deleted file mode 100644
+index abff98ea57d..00000000000
+Binary files a/Tests/images/sugarshack_frame_size.mpo and /dev/null differ
+diff --git a/Tests/test_file_mpo.py b/Tests/test_file_mpo.py
+index 9262e6ca781..ddb5897366b 100644
+--- a/Tests/test_file_mpo.py
++++ b/Tests/test_file_mpo.py
+@@ -104,16 +104,16 @@ def test_exif(test_file: str) -> None:
+ 
+ 
+ def test_frame_size() -> None:
+-    # This image has been hexedited to contain a different size
+-    # in the SOF marker of the second frame
+-    with Image.open("Tests/images/sugarshack_frame_size.mpo") as im:
+-        assert im.size == (640, 480)
++    with Image.open("Tests/images/frame_size.mpo") as im:
++        assert im.size == (56, 70)
++        im.load()
+ 
+         im.seek(1)
+-        assert im.size == (680, 480)
++        assert im.size == (349, 434)
++        im.load()
+ 
+         im.seek(0)
+-        assert im.size == (640, 480)
++        assert im.size == (56, 70)
+ 
+ 
+ def test_ignore_frame_size() -> None:
+diff --git a/src/PIL/JpegImagePlugin.py b/src/PIL/JpegImagePlugin.py
+index 0d110035e1a..755ca648e55 100644
+--- a/src/PIL/JpegImagePlugin.py
++++ b/src/PIL/JpegImagePlugin.py
+@@ -193,6 +193,8 @@ def SOF(self: JpegImageFile, marker: int) -> None:
+     n = i16(self.fp.read(2)) - 2
+     s = ImageFile._safe_read(self.fp, n)
+     self._size = i16(s, 3), i16(s, 1)
++    if self._im is not None and self.size != self.im.size:
++        self._im = None
+ 
+     self.bits = s[0]
+     if self.bits != 8:

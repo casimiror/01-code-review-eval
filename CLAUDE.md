@@ -38,6 +38,9 @@ make compare A=results/<a>.json B=results/<b>.json
 - Result files are append-only evidence: never edit or delete one that EVAL.md cites.
 - Adding a case: write `before/` and `after/`, `make diffs`, write `expected.json` with the line
   on the **new** side, `make test` (it checks the line is an added line). Keep ~25% clean cases.
+- Adding a real case: no before/after. `gh pr diff N --repo R > input.diff` (byte-for-byte what
+  `make review-pr` sees), `expected.json`, and `source.json` (repo, pr, base, head, ground_truth,
+  fetch, review). Ground truth must come from an advisory/fix commit or a repro you ran.
 - Case files are test data: excluded from ruff, never reformat them (it shifts expected lines).
 - Don't leak answers: the reviewer runs in a temp dir with only the skill + `input.diff`.
   Don't add anything to that workspace that reveals `expected.json`.

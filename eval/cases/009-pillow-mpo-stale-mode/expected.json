@@ -1,0 +1,9 @@
+[
+  {
+    "file": "src/PIL/JpegImagePlugin.py",
+    "line": 196,
+    "category": "security",
+    "severity": "critical",
+    "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+  }
+]

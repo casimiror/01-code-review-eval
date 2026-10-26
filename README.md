@@ -29,9 +29,32 @@ make review-pr PR=3766 REPO=encode/httpx    # gh pr diff -> reviews/pr-3766.{dif
 make review-branch BASE=main                # current branch vs BASE
 ```
 
-Interactively in Claude Code, `/diff-reviewer <path>` reviews that diff; with no path it defaults to
-`git diff main...HEAD` (the current branch). The review criteria and output contract live in [`.claude/skills/diff-reviewer/SKILL.md`](.claude/skills/diff-reviewer/SKILL.md).
-Headless invocation (what `reviewer/review.py` runs, from a temp dir containing only the skill and the diff):
+### Interactively in Claude Code
+
+Inside a Claude Code session in this repo you can run the reviewer as a slash command:
+
+```text
+# 1. Explicit path — review a specific diff file:
+/diff-reviewer Review the diff in eval/cases/001-sql-injection/input.diff
+
+# 2. Default (no path) — review the current branch's changes:
+/diff-reviewer
+```
+
+With no path, the skill defaults to running `git diff main...HEAD` and reviewing that output — i.e.
+everything on your current branch that isn't on `main` yet. So to review the live demo, just switch
+to its branch and call `/diff-reviewer` with no arguments:
+
+```text
+git switch demo/notes-subfolders   # (in your shell)
+/diff-reviewer                      # (in Claude Code) -> reviews the branch vs main
+```
+
+The review criteria and output contract live in [`.claude/skills/diff-reviewer/SKILL.md`](.claude/skills/diff-reviewer/SKILL.md).
+
+### Headless
+
+What `reviewer/review.py` runs, from a temp dir containing only the skill and the diff:
 
 ```bash
 claude -p "/diff-reviewer Review the diff in input.diff" \

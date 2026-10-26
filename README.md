@@ -28,7 +28,8 @@ make review-pr PR=3766 REPO=encode/httpx    # gh pr diff -> reviews/pr-3766.{dif
 make review-branch BASE=main                # current branch vs BASE
 ```
 
-The review criteria and output contract live in [`.claude/skills/diff-reviewer/SKILL.md`](.claude/skills/diff-reviewer/SKILL.md).
+Interactively in Claude Code, `/diff-reviewer <path>` reviews that diff; with no path it defaults to
+`git diff main...HEAD` (the current branch). The review criteria and output contract live in [`.claude/skills/diff-reviewer/SKILL.md`](.claude/skills/diff-reviewer/SKILL.md).
 Headless invocation (what `reviewer/review.py` runs, from a temp dir containing only the skill and the diff):
 
 ```bash

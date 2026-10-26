@@ -1,9 +1,9 @@
 # EVAL.md
 
-An eval for a diff-reviewer skill. Every number below cites a file in `results/`. The reviewer
-(`.claude/skills/diff-reviewer/SKILL.md`) was **not changed** across any run here — its
-`skill_sha256` is `ab8684b5` in all four result files — so every delta is attributable to the
-dataset, not the system under test.
+An eval for a diff-reviewer skill. Every number below cites a file in `results/`. Iterations 0–1
+grew the **dataset** with the skill held fixed (`skill_sha256` `ab8684b5`), so those deltas are
+dataset-only. Iteration 2 changed the **skill** (and nothing else) to confirm a UX-only edit does
+not move detection. The grader was never changed in the same iteration as either.
 
 ## What is measured
 
@@ -28,6 +28,7 @@ dataset, not the system under test.
 |---|---|---|---|---|---|---|
 | 0 baseline | 8 authored | 1.00 ± 0.00 | 0.86 ± 0.00 | 0.00 | PASS | `results/20261024-000728_baseline.json` |
 | 1 real cases | 11 (8 + 2 OSS + 1 demo) | 0.89 ± 0.00 (CI 0.64–1.00) | 0.81 ± 0.08 (CI 0.64–1.00) | 0.17 | PASS | `results/20261026-155714_dataset-11.json` |
+| 2 skill UX edit | 11 (same) | 0.89 ± 0.00 (CI 0.64–1.00) | 0.80 ± 0.00 (CI 0.64–1.00) | 0.00 | PASS | `results/20261026-192240_skill-default-diff.json` |
 
 Smoke runs on the two OSS cases alone (`20261026-153854`, `20261026-154242`): recall 0.50,
 precision 1.00 — i.e. 010 detected 3/3, 009 missed 0/3. All runs K=3, tolerance ±3, model sonnet.
@@ -50,6 +51,18 @@ unchanged.
 (0/3 every run); `010` and `011` are 3/3 (`...dataset-11.json`).
 **Conclusion**: the hypothesis holds — and the regression is the finding, not a failure. The eval
 now separates "textbook bug in a tiny diff" from "real omission bug", which the baseline could not.
+
+### Iteration 2 — skill UX edit (default to `git diff main...HEAD`)
+**Hypothesis**: letting the skill diff the current branch against `main` when no path is given is a
+pure interactive-UX change; the eval always passes an explicit `input.diff`, so detection should not
+move. This also checks the harness can attribute a *skill* change, not just a dataset one.
+**Change**: one sentence in `SKILL.md` (`skill_sha256` `ab8684b5` → `dcf17d8`). Grader and dataset
+unchanged.
+**Result**: recall **0.89** (unchanged), Pillow still 0/3, same per-case pattern
+(`...skill-default-diff.json`). Precision 0.81 → 0.80 and clean FA 0.17 → 0.00 are run-to-run noise
+on the one clean case that occasionally false-alarms (`007`), not the edit.
+**Conclusion**: confirmed UX-only. The `skill_sha256` changed but the numbers did not, which is
+exactly what should happen when the changed code path is never exercised by the eval.
 
 ## What I found
 

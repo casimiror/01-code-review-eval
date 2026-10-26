@@ -1,0 +1,904 @@
+{
+  "meta": {
+    "label": "skill-default-diff",
+    "timestamp": "2026-10-26T19:22:40+00:00",
+    "model": "sonnet",
+    "runs": 3,
+    "line_tolerance": 3,
+    "skill_sha256": "dcf17d8854dc",
+    "git_commit": "0031ff9",
+    "git_dirty": true,
+    "claude_version": "2.1.310 (Claude Code)"
+  },
+  "gate": {
+    "passed": true,
+    "checks": {
+      "recall": true,
+      "precision": true,
+      "clean_false_alarm_rate": true
+    },
+    "thresholds": {
+      "min_recall": 0.7,
+      "min_precision": 0.7,
+      "max_clean_false_alarm": 0.25
+    }
+  },
+  "summary": {
+    "precision": {
+      "mean": 0.8000000000000002,
+      "std": 0.0,
+      "min": 0.8,
+      "max": 0.8,
+      "n": 3,
+      "ci95_cases": [
+        0.6363636363636364,
+        1.0
+      ]
+    },
+    "recall": {
+      "mean": 0.8888888888888888,
+      "std": 0.0,
+      "min": 0.8888888888888888,
+      "max": 0.8888888888888888,
+      "n": 3,
+      "ci95_cases": [
+        0.6363636363636364,
+        1.0
+      ]
+    },
+    "f1": {
+      "mean": 0.8421052631578948,
+      "std": 0.0,
+      "min": 0.8421052631578948,
+      "max": 0.8421052631578948,
+      "n": 3
+    },
+    "category_accuracy": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 3
+    },
+    "severity_accuracy": {
+      "mean": 0.875,
+      "std": 0.0,
+      "min": 0.875,
+      "max": 0.875,
+      "n": 3
+    },
+    "clean_false_alarm_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 3
+    },
+    "contract_failure_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 3
+    },
+    "recall_by_category": {
+      "correctness": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "performance": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "reliability": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "security": {
+        "mean": 0.75,
+        "std": 0.0,
+        "min": 0.75,
+        "max": 0.75,
+        "n": 3
+      }
+    }
+  },
+  "per_case": {
+    "001-sql-injection": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "002-clean-refactor": {
+      "expected": 0,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "003-off-by-one-pages": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "004-missing-await": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 1.0
+    },
+    "005-hardcoded-secret": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 1.0
+    },
+    "006-swallowed-exception": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "007-clean-feature": {
+      "expected": 0,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "008-n-plus-one": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "009-pillow-mpo-stale-mode": {
+      "expected": 1,
+      "detected_runs": "0/3",
+      "mean_fp": 0.0
+    },
+    "010-httpx-base-url-query": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    },
+    "011-path-traversal-notes": {
+      "expected": 1,
+      "detected_runs": "3/3",
+      "mean_fp": 0.0
+    }
+  },
+  "per_run": [
+    {
+      "tp": 8,
+      "fp": 2,
+      "fn": 1,
+      "precision": 0.8,
+      "recall": 0.8888888888888888,
+      "f1": 0.8421052631578948,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 0.875,
+      "clean_false_alarm_rate": 0.0,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 0.75,
+        "correctness": 1.0,
+        "reliability": 1.0,
+        "performance": 1.0
+      }
+    },
+    {
+      "tp": 8,
+      "fp": 2,
+      "fn": 1,
+      "precision": 0.8,
+      "recall": 0.8888888888888888,
+      "f1": 0.8421052631578948,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 0.875,
+      "clean_false_alarm_rate": 0.0,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 0.75,
+        "correctness": 1.0,
+        "reliability": 1.0,
+        "performance": 1.0
+      }
+    },
+    {
+      "tp": 8,
+      "fp": 2,
+      "fn": 1,
+      "precision": 0.8,
+      "recall": 0.8888888888888888,
+      "f1": 0.8421052631578948,
+      "category_accuracy": 1.0,
+      "severity_accuracy": 0.875,
+      "clean_false_alarm_rate": 0.0,
+      "contract_failure_rate": 0.0,
+      "recall_by_category": {
+        "security": 0.75,
+        "correctness": 1.0,
+        "reliability": 1.0,
+        "performance": 1.0
+      }
+    }
+  ],
+  "cost": {
+    "total_usd": 0.672,
+    "p50_s": 6.594519374979427,
+    "p95_s": 11.091696375020547
+  },
+  "raw": [
+    {
+      "run": 0,
+      "case": "001-sql-injection",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.018303899999999998,
+      "duration_s": 5.84,
+      "findings": [
+        {
+          "file": "app/users.py",
+          "line": 13,
+          "severity": "critical",
+          "category": "security",
+          "description": "SQL injection: `name` is interpolated into the query with an f-string. An input like `' OR '1'='1` or a UNION payload returns or exposes arbitrary data. Use a parameterized query instead, e.g. `conn.execute(\"... WHERE name LIKE ?\", (f\"%{name}%\",))`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "002-clean-refactor",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0161062,
+      "duration_s": 4.21,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "003-off-by-one-pages",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0176396,
+      "duration_s": 5.3,
+      "findings": [
+        {
+          "file": "app/pagination.py",
+          "line": 11,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`count // per_page` uses floor division, so a partial last page is not counted. 25 items with per_page=20 returns 1 instead of 2, which hides the remaining items. Use ceiling division: `(count + per_page - 1) // per_page`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "004-missing-await",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0270491,
+      "duration_s": 10.32,
+      "findings": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`getUser` is async (it is awaited in `getProjects`), but it is called here without `await`. `user` is a Promise, so `user.isAdmin` is always undefined and every request gets a 403, including requests from admins. Deleting a project never works."
+        },
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "security",
+          "description": "The admin check for a destructive action relies on the client-supplied `x-user-id` header with no authentication. Once the missing `await` is fixed, anyone who sends an admin's user id can delete any project. A missing or unknown id also leaves `user` null or undefined, so `user.isAdmin` throws."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "security",
+          "description": "The admin check for a destructive action relies on the client-supplied `x-user-id` header with no authentication. Once the missing `await` is fixed, anyone who sends an admin's user id can delete any project. A missing or unknown id also leaves `user` null or undefined, so `user.isAdmin` throws."
+        }
+      ]
+    },
+    {
+      "run": 0,
+      "case": "005-hardcoded-secret",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0213853,
+      "duration_s": 7.21,
+      "findings": [
+        {
+          "file": "app/billing.py",
+          "line": 5,
+          "severity": "critical",
+          "category": "security",
+          "description": "A production payments API token is hardcoded in source and committed to version control. Anyone with repo access can use it, and it should be rotated."
+        },
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now silently falls back to the hardcoded prod token instead of failing. A misconfigured dev, test, or staging environment would send real charges to production."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now silently falls back to the hardcoded prod token instead of failing. A misconfigured dev, test, or staging environment would send real charges to production."
+        }
+      ]
+    },
+    {
+      "run": 0,
+      "case": "006-swallowed-exception",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.017387899999999998,
+      "duration_s": 5.32,
+      "findings": [
+        {
+          "file": "app/sync.py",
+          "line": 14,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "The bare `except Exception: pass` swallows every save failure with no logging or re-raise. If repo.save fails (e.g. DB outage or constraint violation), orders are silently dropped. The function returns a lower count, and the caller can't tell a partial sync from a complete one. Log the exception, and either re-raise or report the failures."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "007-clean-feature",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0158679,
+      "duration_s": 4.29,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "008-n-plus-one",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0175516,
+      "duration_s": 5.18,
+      "findings": [
+        {
+          "file": "app/queries.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "performance",
+          "description": "orders_with_customers loads all orders unbounded and then calls session.get(Customer, ...) per order, an N+1 pattern. session.get hits the identity map only for already-loaded customers, so with many distinct customers it issues one query each. Use a single join or joinedload/selectinload instead."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "009-pillow-mpo-stale-mode",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0215751,
+      "duration_s": 10.4,
+      "findings": [],
+      "missed": [
+        {
+          "file": "src/PIL/JpegImagePlugin.py",
+          "line": 196,
+          "category": "security",
+          "severity": "critical",
+          "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+        }
+      ],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "010-httpx-base-url-query",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0248036,
+      "duration_s": 9.69,
+      "findings": [
+        {
+          "file": "httpx/_client.py",
+          "line": 420,
+          "severity": "medium",
+          "category": "correctness",
+          "description": "When the base_url has a query string and the merged URL also has one (e.g. build_request('GET', '/users?a=1') with base 'https://x/get?data=1'), merge_url.raw_path already contains '?a=1'. The code appends another '?' + base_query, giving 'users?a=1?data=1'. The query is malformed: the base param is folded into a's value, and the request's own params are mixed with it."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 0,
+      "case": "011-path-traversal-notes",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0203956,
+      "duration_s": 7.89,
+      "findings": [
+        {
+          "file": "demo/notes_server.py",
+          "line": 28,
+          "severity": "critical",
+          "category": "security",
+          "description": "Path traversal: `name` comes straight from the URL and is joined to NOTES_DIR with no validation, and the allowlist check against list_notes() was removed. A request like `/notes/../../etc/passwd` or an absolute-style path passes `is_file()` and the server returns that file's contents. This allows reading any file the process can access."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "001-sql-injection",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0182676,
+      "duration_s": 5.73,
+      "findings": [
+        {
+          "file": "app/users.py",
+          "line": 13,
+          "severity": "critical",
+          "category": "security",
+          "description": "The `name` argument is interpolated directly into the SQL string, so it allows SQL injection. An input like `' UNION SELECT id, password FROM users --` changes the query and can expose or alter data. Use a parameterized query instead: `conn.execute(\"... LIKE ?\", (f\"%{name}%\",))`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "002-clean-refactor",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0160799,
+      "duration_s": 5.12,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "003-off-by-one-pages",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.021453999999999997,
+      "duration_s": 8.62,
+      "findings": [
+        {
+          "file": "app/pagination.py",
+          "line": 9,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`count // per_page` uses floor division, so it drops a partial last page. For example, 25 items with per_page=20 returns 1 instead of 2, and 5 items returns 0. It needs ceiling division, e.g. `(count + per_page - 1) // per_page`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "004-missing-await",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.027374999999999997,
+      "duration_s": 17.77,
+      "findings": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`getUser` is async, as `getProjects` awaits it, but it isn't awaited here. `user` is a Promise, so `user.isAdmin` is always undefined. Every delete request, including those from real admins, gets a 403, and `removeProject` never runs."
+        },
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "security",
+          "description": "The admin check depends on the client-supplied `x-user-id` header with no authentication. Once the missing `await` is fixed, anyone who sends an admin's user id can delete any project. The handler also never checks that the project exists or belongs to the caller."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "security",
+          "description": "The admin check depends on the client-supplied `x-user-id` header with no authentication. Once the missing `await` is fixed, anyone who sends an admin's user id can delete any project. The handler also never checks that the project exists or belongs to the caller."
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "case": "005-hardcoded-secret",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0198542,
+      "duration_s": 8.11,
+      "findings": [
+        {
+          "file": "app/billing.py",
+          "line": 5,
+          "severity": "critical",
+          "category": "security",
+          "description": "A production payments API token is hardcoded in source and will be committed to version control. Anyone with repo access can use it, and it needs rotating."
+        },
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now falls back silently to the hardcoded prod token instead of failing. A misconfigured dev or staging environment will then make real charges with production credentials."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now falls back silently to the hardcoded prod token instead of failing. A misconfigured dev or staging environment will then make real charges with production credentials."
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "case": "006-swallowed-exception",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0219062,
+      "duration_s": 8.66,
+      "findings": [
+        {
+          "file": "app/sync.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "`except Exception: pass` swallows every error from `repo.save`, including DB outages and constraint violations. Failed orders are dropped with no log or re-raise. The function returns a smaller count and the caller can't tell the sync was partial, so orders are silently lost. Log the exception (the module already defines `log`), and either re-raise or report the failures."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "007-clean-feature",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.015841599999999997,
+      "duration_s": 4.11,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "008-n-plus-one",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0195242,
+      "duration_s": 7.83,
+      "findings": [
+        {
+          "file": "app/queries.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "performance",
+          "description": "N+1 query: for every order, `session.get(Customer, ...)` can issue a separate SELECT for each distinct customer not already in the identity map. The query also loads all orders with no limit. With many orders this means thousands of queries. Use a single join, such as `session.query(Order, Customer).join(Customer, Customer.id == Order.customer_id)`, or eager loading."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "009-pillow-mpo-stale-mode",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0198839,
+      "duration_s": 5.38,
+      "findings": [],
+      "missed": [
+        {
+          "file": "src/PIL/JpegImagePlugin.py",
+          "line": 196,
+          "category": "security",
+          "severity": "critical",
+          "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+        }
+      ],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "010-httpx-base-url-query",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0250099,
+      "duration_s": 11.09,
+      "findings": [
+        {
+          "file": "httpx/_client.py",
+          "line": 420,
+          "severity": "medium",
+          "category": "correctness",
+          "description": "If the base_url has a query and the request URL also has one, e.g. base `https://h/get?data=1` with `build_request('GET', '/users?x=1')`, the merged raw_path becomes `/get/users?x=1?data=1`. The request's own query is corrupted (`x` becomes `1?data=1`) and the base query is not merged properly. The two queries need to be combined with `&`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 1,
+      "case": "011-path-traversal-notes",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0196019,
+      "duration_s": 4.99,
+      "findings": [
+        {
+          "file": "demo/notes_server.py",
+          "line": 27,
+          "severity": "critical",
+          "category": "security",
+          "description": "The allowlist check was replaced with `NOTES_DIR / name`, which is only an `is_file()` test. A request such as `GET /notes/../../etc/passwd`, or an absolute path like `/notes//etc/passwd`, resolves outside NOTES_DIR and is served. The path is not normalised, resolved or confined to NOTES_DIR, and any readable file is exposed. It also no longer requires a `.txt` suffix."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "001-sql-injection",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0221013,
+      "duration_s": 15.23,
+      "findings": [
+        {
+          "file": "app/users.py",
+          "line": 13,
+          "severity": "critical",
+          "category": "security",
+          "description": "The `name` value is interpolated straight into the SQL string with an f-string, so it allows SQL injection. An input such as `' UNION SELECT id, password FROM users --` can read arbitrary data, and `'` alone breaks the query. Use a parameterized query instead: `conn.execute(\"... WHERE name LIKE ?\", (f\"%{name}%\",))`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "002-clean-refactor",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0160799,
+      "duration_s": 3.92,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "003-off-by-one-pages",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0226352,
+      "duration_s": 8.27,
+      "findings": [
+        {
+          "file": "app/pagination.py",
+          "line": 9,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`count // per_page` uses floor division, so a partial last page is dropped. For example, 25 items with per_page=20 returns 1 page instead of 2, and 5 items returns 0 pages. Use ceiling division: `(count + per_page - 1) // per_page`."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "004-missing-await",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0266384,
+      "duration_s": 8.94,
+      "findings": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "correctness",
+          "description": "`getUser` is async, as `getProjects` shows by awaiting it, but it isn't awaited here. `user` is a Promise, so `user.isAdmin` is always undefined and every call returns 403, even for admins. Delete never works."
+        },
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "security",
+          "description": "The caller's identity comes from the client-supplied `x-user-id` header with no authentication. Once the missing `await` is fixed, anyone can send an admin's user id and delete any project. If `getUser` returns null for an unknown id, `user.isAdmin` throws and the request returns a 500 instead of a 401 or 403."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "src/routes/projects.js",
+          "line": 10,
+          "severity": "high",
+          "category": "security",
+          "description": "The caller's identity comes from the client-supplied `x-user-id` header with no authentication. Once the missing `await` is fixed, anyone can send an admin's user id and delete any project. If `getUser` returns null for an unknown id, `user.isAdmin` throws and the request returns a 500 instead of a 401 or 403."
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "case": "005-hardcoded-secret",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0208179,
+      "duration_s": 6.78,
+      "findings": [
+        {
+          "file": "app/billing.py",
+          "line": 5,
+          "severity": "critical",
+          "category": "security",
+          "description": "A production payments API token is hardcoded in source and committed to version control. Anyone with repo access can use it, and it needs rotating."
+        },
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now silently falls back to the hardcoded prod token instead of failing. A misconfigured dev or staging environment would then charge against production."
+        }
+      ],
+      "missed": [],
+      "spurious": [
+        {
+          "file": "app/billing.py",
+          "line": 9,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "If PAYMENTS_API_TOKEN is unset, the code now silently falls back to the hardcoded prod token instead of failing. A misconfigured dev or staging environment would then charge against production."
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "case": "006-swallowed-exception",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0182142,
+      "duration_s": 6.59,
+      "findings": [
+        {
+          "file": "app/sync.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "reliability",
+          "description": "`except Exception: pass` swallows every error from `repo.save` with no logging or re-raise. If the DB is down or an order is invalid, orders are silently dropped and the caller only sees a lower count. It can't tell a partial failure from success, and the cause is lost. Log the exception (a `log` is already defined) and either re-raise or report the failures."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "007-clean-feature",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.015841599999999997,
+      "duration_s": 3.92,
+      "findings": [],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "008-n-plus-one",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0186279,
+      "duration_s": 5.48,
+      "findings": [
+        {
+          "file": "app/queries.py",
+          "line": 12,
+          "severity": "medium",
+          "category": "performance",
+          "description": "N+1 query: session.get(Customer, order.customer_id) is called for every order, and the unbounded session.query(Order).all() loads every order. For large tables this issues thousands of queries (the identity map only caches repeat customer IDs). Use a single join, e.g. session.query(Order, Customer).join(Customer, Order.customer_id == Customer.id), or eager loading."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "009-pillow-mpo-stale-mode",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0199839,
+      "duration_s": 5.74,
+      "findings": [],
+      "missed": [
+        {
+          "file": "src/PIL/JpegImagePlugin.py",
+          "line": 196,
+          "category": "security",
+          "severity": "critical",
+          "description": "The cached C image is only dropped when the size changes, not the mode. An MPO whose frame 0 is L and frame 1 is RGB/CMYK at the same size decodes wide pixels into the stale narrow buffer: native out-of-bounds write (GHSA-v9pv-5gc8-w2m6, fixed in Pillow 13.0.0)."
+        }
+      ],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "010-httpx-base-url-query",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.028650500000000002,
+      "duration_s": 8.11,
+      "findings": [
+        {
+          "file": "httpx/_client.py",
+          "line": 420,
+          "severity": "medium",
+          "category": "correctness",
+          "description": "When the base URL has a query and the request URL also has one, the code appends `?` + base_query after a path that already contains a query. For example, `build_request('GET', '/users?x=1')` with base `.../get?data=1` gives `/get/users?x=1?data=1`, a malformed query. The two queries should be merged with `&`, or the request's query should take precedence."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    },
+    {
+      "run": 2,
+      "case": "011-path-traversal-notes",
+      "ok": true,
+      "error": null,
+      "cost_usd": 0.0195419,
+      "duration_s": 5.96,
+      "findings": [
+        {
+          "file": "demo/notes_server.py",
+          "line": 27,
+          "severity": "critical",
+          "category": "security",
+          "description": "The allowlist check against list_notes() was replaced with a bare is_file() on NOTES_DIR / name. A request like GET /notes/../../etc/passwd (or an absolute-looking name, or any non-.txt file in notes/) passes is_file() and read_bytes() returns arbitrary files from the server. The name needs to be resolved and checked to be inside NOTES_DIR and to match the listed *.txt notes."
+        }
+      ],
+      "missed": [],
+      "spurious": []
+    }
+  ]
+}

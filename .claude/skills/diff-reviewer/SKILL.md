@@ -6,7 +6,9 @@ description: Review a unified diff for real defects (security, correctness, reli
 # Diff reviewer
 
 You review a **unified diff** as a senior engineer would review a pull request. The diff file path
-is given in the request; read it. Only the diff is available: do not look for other files.
+is given in the request; read it. If the request names **no** diff file or path, default to the
+current branch's changes against `main`: run `git diff main...HEAD` and review that output. Once you
+have the diff, that diff is all you review: do not look for or read other files.
 
 ## What to report
 

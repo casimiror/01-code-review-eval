@@ -22,6 +22,8 @@ from reviewer.review import DEFAULT_MODEL, ROOT, SKILL_DIR, review
 CASES_DIR = ROOT / "eval" / "cases"
 RESULTS_DIR = ROOT / "results"
 CANARY = "CANARY"
+# The canary only shows up in a finding, so preflight on a case the reviewer always flags.
+PREFLIGHT_CASE = CASES_DIR / "001-sql-injection" / "input.diff"
 
 
 def load_cases(pattern: str) -> list[dict]:
@@ -92,7 +94,7 @@ def main() -> None:
         sys.exit(f"no cases match {args.cases!r}")
     clean_cases = {c["name"] for c in cases if not c["expected"]}
     if not args.skip_preflight:
-        preflight_skill_loaded(args.model, cases[0]["diff"])
+        preflight_skill_loaded(args.model, PREFLIGHT_CASE.read_text())
 
     jobs = [(run, c) for run in range(args.runs) for c in cases]
     print(f"{len(cases)} cases x {args.runs} runs = {len(jobs)} reviews ({args.model})")

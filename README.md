@@ -7,6 +7,7 @@ numbers a release can be gated on. Results and analysis: **[EVAL.md](EVAL.md)**.
 
 - [uv](https://docs.astral.sh/uv/), git
 - [Claude Code](https://docs.claude.com/en/docs/claude-code) CLI, logged in (or `ANTHROPIC_API_KEY` set, which enables `--bare`)
+- [`gh`](https://cli.github.com/) CLI, authenticated (`gh auth login`) — only for `make review-pr` (reviewing a GitHub PR)
 
 ```bash
 uv sync
